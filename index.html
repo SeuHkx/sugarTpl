@@ -53,22 +53,24 @@
     </div>
 </script>
 <script type="text/html" id="tplDemo">
-    <h4>${json.title}</h4>
-    <ul>
+    ${json.title}
+
         {@for(var i = 0, l = json.list.length; i < l ; i += 1){
+            <ul>
             {@if (i===0){
                 <li style="color: red;">
                     <span>${json.list[i].name}</span>
                     <span>${json.list[i].song}</span>
                 </li>
-            }@/if} {@else {
+            }@/if}{@else{
                 <li>
                     <span>${json.list[i].name}</span>
                     <span>${json.list[i].song}</span>
                 </li>
             }@/else}
+
         }@/for}
-    </ul>
+        </ul>
 </script>
 </body>
 </html>
