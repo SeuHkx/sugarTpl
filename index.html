@@ -3,74 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>htpl</title>
-    <link rel="stylesheet" href="../../dist/Wild.min.css"/>
+    <title>sugarTpl</title>
+    <link rel="stylesheet" href="dist/Wild.min.css"/>
 </head>
 <body>
 <div class="view" id="view"></div>
-<!--<div class="" id="chart"></div>-->
 <a class="wd-button wd-button--blue" id="button">开始执行模版</a>
 <script src="sugarTpl.js"></script>
 <script src="data.js"></script>
 <script src="index.js"></script>
-<script>
-    //普通处理字符串方式 嵌套层级越多 越是噩梦 不能处理有逻辑判断的情况 很糟糕
-    var strLoginHtml= '<div class="login-title">'
-            + '</div>'
-            + '<div class="login-form"><div class="wd-form-group">'
-            + '<input type="text" class="wd-input wd-input-field" placeholder="请输入用户名"/>'
-            + '</div>'
-            + '<div class="wd-form-group"><input type="password" class="wd-input wd-input-field" placeholder="请输入密码"/></div>'
-            + '<div class="wd-form-group">'
-            +  '<div class="wd-radio"><input type="radio" name="user" id="userEnterprise" checked/><label for="userEnterprise">企业用户</label></div>'
-            +  '<div class="wd-radio"><input type="radio" name="user" id="userIntegrator"/><label for="userIntegrator">定制用户</label></div>'
-            +  '<div class="wd-radio"><input type="radio" name="user" id="userSystem"/><label for="userSystem">运营用户</label></div>'
-            + '</div>'
-            + '<a>忘记密码?</a>'
-            + '</div>';
-</script>
-<script type="text/html">
-    //模版引擎处理方式 更直观 就像是在书写html代码一样 随时处理含有逻辑处理的情况
-    <div class="login-title"></div>
-    <div class="login-form">
-        <div class="wd-form-group">
-            <input type="text" class="wd-input wd-input-field" placeholder="请输入用户名">
-        </div>
-        <div class="wd-form-group">
-            <div class="wd-radio">
-                <input type="radio" name="user" id="" checked/>
-                <label>企业用户</label>
-            </div>
-            <div class="wd-radio">
-                <input type="radio" name="user" id="" checked/>
-                <label>企业用户</label>
-            </div>
-            <div class="wd-radio">
-                <input type="radio" name="user" id="" checked/>
-                <label>企业用户</label>
-            </div>
-        </div>
-    </div>
-</script>
 <script type="text/html" id="tplDemo">
-    ${json.title}
-
+    <h4>${json.title}</h4>
+    <ul>
         {@for(var i = 0, l = json.list.length; i < l ; i += 1){
-            <ul>
             {@if (i===0){
-                <li style="color: red;">
-                    <span>${json.list[i].name}</span>
-                    <span>${json.list[i].song}</span>
+                <li>
+                    <span class="wd-badge wd-badge--blue"><i>${json.list[i].name}</i></span>
+                    <span class="wd-badge wd-badge--blue"><i>${json.list[i].song}</i></span>
                 </li>
             }@/if}{@else{
                 <li>
-                    <span>${json.list[i].name}</span>
-                    <span>${json.list[i].song}</span>
+                    <span class="wd-badge wd-badge--red"><i>${json.list[i].name}</i></span>
+                    <span class="wd-badge wd-badge--red"><i>${json.list[i].song}</i></span>
                 </li>
             }@/else}
-
         }@/for}
-        </ul>
+     </ul>
+
+    {@for(var j = 0 , len = json.list.length; j < len ; j += 1){
+        <span class="wd-badge wd-badge--blue">
+            <i>${json.list[j].name}</i>
+        </span>
+    }@/for}
 </script>
 </body>
 </html>

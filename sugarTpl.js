@@ -19,7 +19,7 @@
     var sugarTemplate,
         sugarTemplateSettings = {
             evaluate      : /(\{@)|(@\/\w+\})/g,
-            tagStart      : /([^\}]\{@)/g,
+            tagStart      : /(\{@)/g,
             tagClose      : /(\}@\/\w+\})/g,
             tagConnection : /(\})@\/\w+.\{@(\w+)(\{)/g,
             connection    : /\}@\/\w+\}\{@\w+\{/g,
@@ -77,11 +77,11 @@
                 .replace(/(\}@\/\w+\})(\s)(\{@\w+\{)/g,'$1$3')
                 .replace(/(\}@\/\w+\})(\s)(\{@\w+)(\s)(\{)/g,'$1$3$5')
                 .replace(/(\}@\/\w+\})(\{@\w+)(\s)(\{)/g,'$1$2$4')
-                .replace(exp.tagStart, '";$1')
                 .replace(exp.connection,function (code) {
-                    code = code.replace(exp.tagConnection,'"$1$2$3');
+                    code = code.replace(exp.tagConnection,'";$1$2$3');
                     return code + ';sugarBuildTemplate +="';
                 })
+                .replace(exp.tagStart, '";$1')
                 .replace(/\{@+/g, ' {@ ')
                 .replace(exp.sentenceStart, function (code) {
                     return code.replace(/\\/g, '') + ';sugarBuildTemplate +="';
