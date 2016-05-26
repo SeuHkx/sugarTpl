@@ -13,26 +13,26 @@
 <script src="data.js"></script>
 <script src="index.js"></script>
 <script type="text/html" id="tplDemo">
-    <h4>${json.title}</h4>
+    <h4>${d.title}</h4>
     <ul>
-        {@for(var i = 0, l = json.list.length; i < l ; i += 1){
+        {@for(var i = 0, l = d.list.length; i < l ; i += 1){
             {@if (i===0){
                 <li>
-                    <span class="wd-badge wd-badge--blue"><i>${json.list[i].name}</i></span>
-                    <span class="wd-badge wd-badge--blue"><i>${json.list[i].song}</i></span>
+                    <span class="wd-badge wd-badge--blue"><i>${d.list[i].name}</i></span>
+                    <span class="wd-badge wd-badge--blue"><i>${d.list[i].song}</i></span>
                 </li>
             }@/if}{@else{
                 <li>
-                    <span class="wd-badge wd-badge--red"><i>${json.list[i].name}</i></span>
-                    <span class="wd-badge wd-badge--red"><i>${json.list[i].song}</i></span>
+                    <span class="wd-badge wd-badge--red"><i>${d.list[i].name}</i></span>
+                    <span class="wd-badge wd-badge--red"><i>${d.list[i].song}</i></span>
                 </li>
             }@/else}
         }@/for}
      </ul>
 
-    {@for(var j = 0 , len = json.list.length; j < len ; j += 1){
+    {@for(var j = 0 , len = d.list.length; j < len ; j += 1){
         <span class="wd-badge wd-badge--blue">
-            <i>${json.list[j].name}</i>
+            <i>${d.list[j].name}</i>
         </span>
     }@/for}
 </script>

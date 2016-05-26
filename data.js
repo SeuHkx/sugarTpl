@@ -1,7 +1,7 @@
 /**
  * Created by Hekx on 16/3/2.
  */
-var json ={
+var data ={
     title: '热门歌曲',
     list: [
         {name: '薛子谦',   song: '演员'},
@@ -11,4 +11,5 @@ var json ={
         {name: '蔡旻佑',   song: '我可以'}
     ]
 };
-window.json = json;
+
+
